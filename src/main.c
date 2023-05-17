@@ -28,13 +28,13 @@ t_list	*initialize_stack(int argc, char **argv)
 			return (NULL);
 		node->atoierror = 0;
 		nbr = ft_atoi(argv[i], node);
-		if (node->atoierror == -1)
-			return (NULL);
 		node->next = NULL;
 		node->number = nbr;
 		node->index = -1;
 		node->sorted = 0;
 		ft_lstadd_back(&a, node);
+		if (node->atoierror == -1)
+			return (a);
 		i++;
 	}
 	return (a);
@@ -68,9 +68,9 @@ int	main(int argc, char **argv)
 		return (0);
 	a = initialize_stack(size, args);
 	ft_free_args(args, 0);
-	if (is_sorted(a) || !its_repeating(a) || a == NULL)
+	if (is_sorted(a) || !its_repeating(a) || ft_lstsize(a) != size)
 	{
-		if (!its_repeating(a) || a == NULL)
+		if (!its_repeating(a) || ft_lstsize(a) != size)
 			ft_printf("Error\n");
 		ft_free(a, 0);
 		return (0);
