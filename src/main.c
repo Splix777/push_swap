@@ -68,9 +68,9 @@ int	main(int argc, char **argv)
 		return (0);
 	a = initialize_stack(size, args);
 	ft_free_args(args, 0);
-	if (is_sorted(a) || !its_repeating(a) || ft_lstsize(a) != size)
+	if (is_sorted(a) || !its_repeating(a) || ft_lstlast(a)->atoierror == -1)
 	{
-		if (!its_repeating(a) || ft_lstsize(a) != size)
+		if (!its_repeating(a) || ft_lstlast(a)->atoierror == -1)
 			ft_printf("Error\n");
 		ft_free(a, 0);
 		return (0);
